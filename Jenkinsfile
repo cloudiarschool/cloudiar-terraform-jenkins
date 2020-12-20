@@ -7,7 +7,7 @@ pipeline {
       stage('S3 Create Bucket'){
           steps{
               script{
-                  createS3Bucket('Cloudiartest123')
+                  createS3Bucket('cloudiartest123')
               }
           }
       }
