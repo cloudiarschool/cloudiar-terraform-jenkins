@@ -6,9 +6,7 @@ pipeline {
     stages{
       stage('S3 Create Bucket'){
           steps{
-              script{
-                  createS3Bucket('cloudiartest123')
-              }
+              sh "ansible-playbook s3-bucket.yml"
           }
       }
       stage('terraform init and apply - dev'){
@@ -31,9 +29,6 @@ pipeline {
 def getTerraformPath(){
     def tfHome = tool name: 'terraform-14', type: 'terraform'
     return tfHome
-}
-def createS3Bucket(bucketName){
-    sh returnStatus: true, script: "aws s3 mb s3://${bucketName} --region us-east-1"
 }
 
 
