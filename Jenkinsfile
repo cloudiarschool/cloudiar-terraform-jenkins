@@ -1,7 +1,8 @@
 pipeline {
     agent any 
     environment {
-      PATH = "${PATH}:${getTerraformPath()}"
+      PATH = "${PATH}:${getTerraformPath():${getAnsiblePath()}}"
+
     }
     stages{
       stage('S3 Create Bucket'){
@@ -29,6 +30,10 @@ pipeline {
 def getTerraformPath(){
     def tfHome = tool name: 'terraform-14', type: 'terraform'
     return tfHome
+}
+def getAnsiblePath(){
+    def ansHome = ansiblePlaybook installation: 'ansible', playbook: ''
+    return ansHome
 }
 
 
