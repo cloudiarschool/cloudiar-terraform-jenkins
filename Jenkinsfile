@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-      PATH = "${PATH}:${getTerraformPath():${getAnsiblePath()}}"
+      PATH = "${PATH}:${getTerraformPath()}:${getAnsiblePath()}"
 
     }
     stages{
