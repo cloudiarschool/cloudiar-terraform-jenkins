@@ -6,7 +6,7 @@ variable "vpc_cidr" {
     default = "10.20.0.0/16"
 }
 
-varibale "subnet_cidr" {
+variable "subnet_cidr" {
     default = "10.20.1.0/24"
 }
 
