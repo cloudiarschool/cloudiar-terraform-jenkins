@@ -8,7 +8,7 @@ resource "aws_vpc" "cloudiar_vpc" {
 }
 
 resource "aws_subnet" "cloudiar_subnet" {
-    cidr_block = "172.17.1.0/24"
+    cidr_block = var.subnet_cidr
     vpc_id = aws_vpc.cloudiar_vpc.id
 
     tags = {
