@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-        bucket = "mysql-docker-bakcup"
+        bucket = "Cloudiartest123"
         key = "terraform.tfstate"
         region = "us-east-1"
         dynamodb_table = "sunday-tf"
