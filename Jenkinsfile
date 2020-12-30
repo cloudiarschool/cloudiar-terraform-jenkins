@@ -34,8 +34,7 @@ def getTerraformPath(){
     return tfHome
 }
 def getAnsiblePath(playbook){
-    def ansHome = ansiblePlaybook installation: 'ansible', playbook: '${playbook}'
-    return ansHome
+    def ansHome = ansiblePlaybook become: true, installation: 'ansible', playbook: '${playbook}'
 }
 
 
