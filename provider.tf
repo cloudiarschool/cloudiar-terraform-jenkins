@@ -7,6 +7,6 @@ terraform {
         bucket = "cloudiartest123"
         key = "terraform.tfstate"
         region = "us-east-1"
-        dynamodb_table = "sunday-tf"
+        dynamodb_table = "fatih-table"
     }
 }
