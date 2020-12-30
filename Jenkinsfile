@@ -12,19 +12,17 @@ pipeline {
       }
       stage('terraform init and apply - dev'){
         steps{
-          sh "terraform init"
           sh label: '', returnStatus: true, script: 'terraform workspace new dev'
-          sh "terraform workspace select dev"
+          sh "terraform init"
           sh "ansible-playbook ansterraform.yml"
 
         }
     }
     stage('terraform init and apply - prod'){
         steps{
-          sh "terraform init"
           sh label: '', returnStatus: true, script: 'terraform workspace new prod'
-          sh "terraform workspace select prod"
-          sh "ansible-playbook ansterraform.yml" 
+          sh "terraform init"
+          sh "ansible-playbook ansterraform.yml --extra-vars app_env=prod" 
         }
     }
 }
