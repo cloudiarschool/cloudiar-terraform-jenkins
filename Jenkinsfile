@@ -7,7 +7,9 @@ pipeline {
     stages{
       stage('S3 Create Bucket'){
           steps{
-              sh "ansible-playbook s3-bucket.yml"
+              script{
+                  getAnsiblePath('s3-bucket.yml')
+              }
           }
       }
       stage('terraform init and apply - dev'){
@@ -31,8 +33,8 @@ def getTerraformPath(){
     def tfHome = tool name: 'terraform-14', type: 'terraform'
     return tfHome
 }
-def getAnsiblePath(){
-    def ansHome = ansiblePlaybook installation: 'ansible', playbook: ''
+def getAnsiblePath(playbook){
+    def ansHome = ansiblePlaybook installation: 'ansible', playbook: '${playbook}'
     return ansHome
 }
 
